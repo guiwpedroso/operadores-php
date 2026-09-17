@@ -13,8 +13,8 @@ if ($n2 != 0) {
     $divisao = $n1 / $n2;
     $modulo = $n1 % $n2;
 } else {
-    $divisao = "Não é possível dividir por zero.";
-    $modulo = "Não é possível calcular o módulo por zero.";
+    $divisao = 0;
+    $modulo = 0;
 }
 
 ?>
@@ -43,9 +43,13 @@ echo "<p>Subtração (-): $n1 - $n2 = $subtracao</p>";
 
 echo "<p>Multiplicação (*): $n1 * $n2 = $multiplicacao</p>";
 
-echo "<p>Divisão (/): $n1 / $n2 = $divisao</p>";
-
-echo "<p>Resto da divisão (%): $n1 % $n2 = $modulo</p>";
+if ($n2 != 0) {
+    echo "<p>Divisão (/): $n1 / $n2 = $divisao</p>";
+    echo "<p>Resto da divisão (%): $n1 % $n2 = $modulo</p>";
+} else {
+    echo "<p>Não é possível dividir por zero.</p>";
+    echo "<p>Não é possível calcular o resto da divisão por zero.</p>";
+}
 
 echo "<p>Potência (**): $n1 ** $n2 = $potencia</p>";
 
