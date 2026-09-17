@@ -1,100 +1,62 @@
 <?php
 
-$nome = $_POST['tnome'];
-$anoNasc = (int) $_POST['tano'];
-$anoAtual = (int) date('Y');
+$n1 = (float) $_POST["n1"];
+$n2 = (float) $_POST["n2"];
 
-$idade = $anoAtual - $anoNasc;
+$soma = $n1 + $n2;
+$subtracao = $n1 - $n2;
+$multiplicacao = $n1 * $n2;
+$potencia = $n1 ** $n2;
+$concatenacao = (string) $n1 . (string) $n2;
 
-
-
-$diasVividos = $idade * 365;
-$horasVividas = $diasVividos * 24;
-$minutosVividos = $horasVividas * 60;
-
-
-
-$bpmMedio = $minutosVividos * 75;
-$respiracoesTotais = $minutosVividos * 15;
-
-
-$expectativaVida = 95;
-
-$anosRestantes = $expectativaVida - $idade;
-
-$minutosRestantes = $anosRestantes * 365 * 24 * 60;
-
-$batimentosRestantes = $minutosRestantes * 75;
-$respiracoesRestantes = $minutosRestantes * 17;
+if ($n2 != 0) {
+    $divisao = $n1 / $n2;
+    $modulo = $n1 % $n2;
+} else {
+    $divisao = "Não é possível dividir por zero.";
+    $modulo = "Não é possível calcular o módulo por zero.";
+}
 
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempo de Vida</title>
+    <title>Resultado</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<div>
 
-    <h1>Tempo de vida</h1>
-    <hr>
+<h1>Resultado das Operações</h1>
 
-    <h2>
-        <?php echo $nome; ?>, sua idade é:
-        <?php echo $idade; ?> anos
-    </h2>
-<h2>
-    <p>
-        Você já viveu aproximadamente
-        <?php echo number_format($diasVividos, 0, ',', '.'); ?> dias.
-    </p>
+<hr>
 
-    <p>
-        Você já viveu aproximadamente
-        <?php echo number_format($horasVividas, 0, ',', '.'); ?> horas.
-    </p>
+<?php
 
-    <p>
-        Você já viveu aproximadamente
-        <?php echo number_format($minutosVividos, 0, ',', '.'); ?> minutos.
-    </p>
+echo "<p>Soma (+): $n1 + $n2 = $soma</p>";
 
-    <p>
-        Seu coração já bateu aproximadamente
-        <?php echo number_format($bpmMedio, 0, ',', '.'); ?> vezes.
-    </p>
+echo "<p>Subtração (-): $n1 - $n2 = $subtracao</p>";
 
-    <p>
-        Você já respirou aproximadamente
-        <?php echo number_format($respiracoesTotais, 0, ',', '.'); ?> vezes.
-    </p>
+echo "<p>Multiplicação (*): $n1 * $n2 = $multiplicacao</p>";
 
-    <p>
-        Sua expectativa de vida considerada é de
-        <?php echo $expectativaVida; ?> anos.
-    </p>
+echo "<p>Divisão (/): $n1 / $n2 = $divisao</p>";
 
-    <p>
-        Até os <?php echo $expectativaVida; ?> anos, ainda restam aproximadamente
-        <?php echo $anosRestantes; ?> anos.
-    </p>
+echo "<p>Resto da divisão (%): $n1 % $n2 = $modulo</p>";
 
-    <p>
-        Até os <?php echo $expectativaVida; ?> anos, ainda restam aproximadamente
-        <?php echo number_format($batimentosRestantes, 0, ',', '.'); ?>
-        batimentos cardíacos.
-    </p>
+echo "<p>Potência (**): $n1 ** $n2 = $potencia</p>";
 
-    <p>
-        Até os <?php echo $expectativaVida; ?> anos, ainda restam aproximadamente
-        <?php echo number_format($respiracoesRestantes, 0, ',', '.'); ?>
-        respirações.
-    </p>
-</h2>
+echo "<p>Concatenação (.): $n1 . $n2 = $concatenacao</p>";
+
+?>
+
+<hr>
+
+<a href="index.php">Voltar</a>
+
+</div>
 </body>
-
 </html>
